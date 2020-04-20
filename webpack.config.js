@@ -1,5 +1,4 @@
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -8,14 +7,18 @@ module.exports = {
         path: path.resolve(__dirname, 'public'),
         filename: 'index.js'
     },
-    // plugins: [
-    //     new UglifyJsPlugin({
-    //         exclude: [/\.min\.js$/gi] // skip pre-minified libs
-    //     })
-    // ],
     devServer: {
         contentBase: path.join(__dirname, 'public'),
         compress: true,
         port: 9000
+    },
+    module: {
+        rules: [
+            { 
+                test: /\.(js|jsx)$/, 
+                exclude: /node_modules/, 
+                use: "babel-loader" // hereeeeeee
+            }
+        ]
     }
 }
