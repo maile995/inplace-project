@@ -1,9 +1,12 @@
 import React from 'react';
 
 class App extends React.Component {
-    render(){
+    constructor( props ) {
+        super( props );
+    }
+    render() {
         return(
-            <div>Hello world</div>
+            <div>Hello world 123</div>
         )
     }
 }
